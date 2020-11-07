@@ -176,7 +176,7 @@ $('#search-city-button').on('click', function() {
     getForecast()
 })
 
-// click event the weather on list button
+//Click event the weather on list button
 $("#city-list").on("click", ".city-button", function() {
 
     var citySearch = $(this).val()
@@ -306,17 +306,15 @@ $("#city-list").on("click", ".city-button", function() {
 
 loadCities()
 
-// Loads citiesList is array is stored
+//Loads citiesList is array is stored
 function loadCities() {
+    //Getting JSON array of the city list
     var storedCities = JSON.parse(localStorage.getItem("cities"))
 
+    //If stored var has cities
     if (storedCities !== null) {
+        //Add the stored list of cities
         listCities = storedCities
     }
     createCityList()
-
-    if (listCities) {
-        var getCity = listCities[listCities.length - 1]
-        console.log(getCity)
-    }
 }
