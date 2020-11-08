@@ -60,7 +60,7 @@ function getWeather () {
         }).then(function(response) {
             //Get Name of the city + weather icons and append to the page
             $("#city-name").text(response.name + " " + date)
-            var iconLink = "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png"
+            var iconLink = "https://openweathermap.org/img/w/" + response.weather[0].icon + ".png"
             var icon = $('<img>').attr("src", iconLink)
             $("#city-name").append(icon)
             //Get temperature in F and append to the page
@@ -84,7 +84,7 @@ function getWeather () {
             //UV Function
             function getUvData () {
                 //UV Api   
-                var queryURL = "http://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&appid=" + apiKey
+                var queryURL = "https://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&appid=" + apiKey
 
                 //Calling UV API
                 $.ajax({
@@ -92,8 +92,10 @@ function getWeather () {
                     method: "GET"
                 //Get information about UV on location and append them to the page
                 }).then(function(data) {
-                    var uv = $("<p>")
-                    uv.text("UV Index: " + data.value)
+                    var uvCopy = $("<p>")
+                    uvCopy.text("UV Index: ")
+                    var uv = $("<span>")
+                    uv.text(data.value)
                     if (data.value <= 2) {
                         uv.addClass("green")
                     } if (data.value <= 5) {
@@ -103,7 +105,8 @@ function getWeather () {
                     } else {
                         uv.addClass("red")
                     }
-                    $("#city-weather").append(uv)
+                    $(uvCopy).append(uv)
+                    $("#city-weather").append(uvCopy)
                 })
             }
             //Start UV function to print UV info
@@ -152,7 +155,7 @@ function getForecast() {
 
                 //Create the icon
                 var iconForecast = forecastDay.weather[0].icon
-                var iconCardLink = "http://openweathermap.org/img/w/" + iconForecast + ".png"
+                var iconCardLink = "https://openweathermap.org/img/w/" + iconForecast + ".png"
                 var iconCard = $('<img>').attr("src", iconCardLink)
 
                 //Create the temperature and humidity paragraph
@@ -210,7 +213,7 @@ $("#city-list").on("click", ".city-button", function() {
             }).then(function(response) {
                 //Get Name of the city + weather icons and append to the page
                 $("#city-name").text(response.name + " " + date)
-                var iconLink = "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png"
+                var iconLink = "https://openweathermap.org/img/w/" + response.weather[0].icon + ".png"
                 var icon = $('<img>').attr("src", iconLink)
                 $("#city-name").append(icon)
                 //Get temperature in F and append to the page
@@ -234,7 +237,7 @@ $("#city-list").on("click", ".city-button", function() {
                 //UV Function
                 function getUvData () {
                     //UV Api   
-                    var queryURL = "http://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&appid=" + apiKey
+                    var queryURL = "https://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&appid=" + apiKey
 
                     //Calling UV API
                     $.ajax({
@@ -303,7 +306,7 @@ $("#city-list").on("click", ".city-button", function() {
 
                     //Create the icon
                     var iconForecast = forecastDay.weather[0].icon
-                    var iconCardLink = "http://openweathermap.org/img/w/" + iconForecast + ".png"
+                    var iconCardLink = "https://openweathermap.org/img/w/" + iconForecast + ".png"
                     var iconCard = $('<img>').attr("src", iconCardLink)
 
                     //Create the temperature and humidity paragraph
