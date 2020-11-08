@@ -50,7 +50,7 @@ https://clem-ent17.github.io/homework-06/
     - Temperature
     - Humidity
     - Wind speed
-    - UV index
+    - UV index (with color coding)
 
 * When the user view future weather conditions for that city, the user is presented with a 5-day forecast that displays:
     - Date
@@ -86,7 +86,6 @@ Work as completed.
 
 Possible improvement: 
     - Better use and call of the getWeather() and getForecast() functions
-    - Color coding of the UV index
 
 - - -
 

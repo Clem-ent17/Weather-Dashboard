@@ -94,6 +94,15 @@ function getWeather () {
                 }).then(function(data) {
                     var uv = $("<p>")
                     uv.text("UV Index: " + data.value)
+                    if (data.value <= 2) {
+                        uv.addClass("green")
+                    } if (data.value <= 5) {
+                        uv.addClass("yellow")
+                    } if (data.value <= 7) {
+                        uv.addClass("orange")
+                    } else {
+                        uv.addClass("red")
+                    }
                     $("#city-weather").append(uv)
                 })
             }
@@ -233,9 +242,21 @@ $("#city-list").on("click", ".city-button", function() {
                         method: "GET"
                     //Get information about UV on location and append them to the page
                     }).then(function(data) {
-                        var uv = $("<p>")
-                        uv.text("UV Index: " + data.value)
-                        $("#city-weather").append(uv)
+                        var uvCopy = $("<p>")
+                        uvCopy.text("UV Index: ")
+                        var uv = $("<span>")
+                        uv.text(data.value)
+                        if (data.value <= 2) {
+                            uv.addClass("green")
+                        } if (data.value <= 5) {
+                            uv.addClass("yellow")
+                        } if (data.value <= 7) {
+                            uv.addClass("orange")
+                        } else {
+                            uv.addClass("red")
+                        }
+                        $(uvCopy).append(uv)
+                        $("#city-weather").append(uvCopy)
                     })
                 }
                 //Start UV function to print UV info
